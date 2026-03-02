@@ -1,0 +1,42 @@
+{
+  "app": {
+    "title": "Kristallens Att-Göra-Lista",
+    "description": "Hantera dina Linear workspace-uppgifter"
+  },
+  "auth": {
+    "login_button": "Logga in med Discord",
+    "logout": "Logga ut"
+  },
+  "loading": {
+    "text": "Laddar..."
+  },
+  "board": {
+    "search_placeholder": "Sök efter uppgifter...",
+    "showing": "Visar",
+    "of": "av",
+    "tasks": "uppgifter",
+    "clear_search": "Rensa sökning"
+  },
+  "modal": {
+    "new_issue": "Ny uppgift",
+    "add": "Lägg till",
+    "save": "Spara",
+    "cancel": "Avbryt",
+    "close": "Stäng"
+  },
+  "errors": {
+    "save_failed": "Kunde inte spara ändringar!",
+    "create_failed": "Kunde inte skapa uppgift!",
+    "api_error": "API-fel"
+  },
+  "issue": {
+    "title": "Titel",
+    "description": "Beskrivning",
+    "priority": "Prioritet",
+    "assignee": "Tilldelad",
+    "status": "Status",
+    "labels": "Etiketter",
+    "steps": "Steg för att återskapa",
+    "image": "Bild-URL"
+  }
+}

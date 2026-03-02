@@ -1,10 +1,12 @@
 import { useEffect, useState, useCallback } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { useTranslation } from "react-i18next";
 import Board from "../components/kanban/Board";
 import Navbar from "../components/layout/Navbar";
 import IssueDetailModal from "../components/modals/IssueDetailModal";
 import NewIssueModal from "../components/modals/NewIssueModal";
 import Button from "../components/ui/Button";
+import LanguageSwitcher from "../components/ui/LanguageSwitcher";
 
 // Parse staff role IDs from environment variable (comma-separated)
 const STAFF_ROLE_IDS = (process.env.NEXT_PUBLIC_DISCORD_STAFF_ROLE_IDS || "").split(",").filter(Boolean);
@@ -13,6 +15,7 @@ const DEBUG_MODE =
   process.env.NODE_ENV === "development" || process.env.NEXT_PUBLIC_DEBUG_MODE === "true";
 
 export default function Home() {
+  const { t } = useTranslation();
   const { data: session, status } = useSession();
 
   const effectiveSession = DEBUG_MODE
@@ -149,7 +152,7 @@ export default function Home() {
         setSelectedIssue(refreshedIssue);
       }
     } else {
-      alert("Kunde inte spara ändringar!");
+      alert(t('errors.save_failed'));
     }
   }
 
@@ -215,7 +218,7 @@ export default function Home() {
           setLoading(false);
         });
     } else {
-      alert("Kunde inte skapa ticket!");
+      alert(t('errors.create_failed'));
     }
   }
 
@@ -235,7 +238,7 @@ export default function Home() {
       <div className="min-h-screen flex items-center justify-center bg-[#0f0f12]">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p className="text-gray-400">Laddar...</p>
+          <p className="text-gray-400">{t('loading.text')}</p>
         </div>
       </div>
     );
@@ -246,10 +249,10 @@ export default function Home() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#0f0f12] via-[#1a1a1f] to-[#0f0f12]">
         <h1 className="text-5xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-8">
-          Kristallens "Att-Göra-Lista"
+          {t('app.title')}
         </h1>
         <Button variant="primary" size="lg" onClick={() => signIn("discord")}>
-          Logga in med Discord
+          {t('auth.login_button')}
         </Button>
       </div>
     );
@@ -268,17 +271,22 @@ export default function Home() {
       />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Language Switcher */}
+        <div className="flex justify-end mb-6">
+          <LanguageSwitcher />
+        </div>
+
         {/* Search results info */}
         {searchQuery && (
           <div className="mb-6 text-center">
             <p className="text-sm text-gray-400">
-              Visar <span className="font-semibold text-gray-300">{filteredIssues.length}</span> av{" "}
-              <span className="font-semibold text-gray-300">{issues.length}</span> tickets
+              {t('board.showing')} <span className="font-semibold text-gray-300">{filteredIssues.length}</span> {t('board.of')}{" "}
+              <span className="font-semibold text-gray-300">{issues.length}</span> {t('board.tasks')}
               <button
                 onClick={() => setSearchQuery("")}
                 className="ml-2 text-blue-400 hover:text-blue-300 underline transition-colors"
               >
-                Rensa sökning
+                {t('board.clear_search')}
               </button>
             </p>
           </div>

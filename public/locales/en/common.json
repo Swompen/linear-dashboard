@@ -1,0 +1,42 @@
+{
+  "app": {
+    "title": "Task Board",
+    "description": "Manage your Linear workspace tasks"
+  },
+  "auth": {
+    "login_button": "Sign in with Discord",
+    "logout": "Sign out"
+  },
+  "loading": {
+    "text": "Loading..."
+  },
+  "board": {
+    "search_placeholder": "Search tasks...",
+    "showing": "Showing",
+    "of": "of",
+    "tasks": "tasks",
+    "clear_search": "Clear search"
+  },
+  "modal": {
+    "new_issue": "New Task",
+    "add": "Add",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close"
+  },
+  "errors": {
+    "save_failed": "Could not save changes!",
+    "create_failed": "Could not create task!",
+    "api_error": "API error"
+  },
+  "issue": {
+    "title": "Title",
+    "description": "Description",
+    "priority": "Priority",
+    "assignee": "Assignee",
+    "status": "Status",
+    "labels": "Labels",
+    "steps": "Steps to reproduce",
+    "image": "Image URL"
+  }
+}
